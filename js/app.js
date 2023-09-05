@@ -1,3 +1,4 @@
+import { ListImages } from "./modules/images.js";
 import { Pages } from "./modules/pages.js";
 import { Prizes } from "./modules/prizes.js";
 import { question } from "./modules/questions.js"
@@ -23,6 +24,10 @@ const Quiz = {
             this.renderButton('Начать'),
             this.renderTextElement('img', '')
         )
+
+        ListImages.forEach(list => {
+            document.querySelector('.img').insertAdjacentHTML('beforeend', `<img src="${list}" alt="img">`)
+        })
         this.buttonListener(document.querySelector('.button'));
     },
 
@@ -35,10 +40,16 @@ const Quiz = {
                 }
                 if(this.live > 0 && this.page < this.questions.length + 1) {
                     this.renderQuizPage();
-                }else if(this.live === 0) {
-                    console.log('looser')
                 }else{
-                    console.log('winner')
+                    button.textContent = 'К покупкам'
+                    if(this.live === 0) {
+                        this.renderResultPage('looser')
+                    }else{
+                        this.renderResultPage('winner')
+                    }
+                    button.onclick = () => {
+                        alert('Тут переход на категорию внутри МП')
+                    }
                 }
             }
         }
@@ -100,9 +111,7 @@ const Quiz = {
     checkAnswer(target) {
         if(target.dataset.id) {
             this.afterCheckAnswer(target, Boolean(this.questions[this.page - 2].answers[target.dataset.id].true))
-            if(this.questions[this.page - 2].answers[target.dataset.id].true) {
-                
-            }else{
+            if(!this.questions[this.page - 2].answers[target.dataset.id].true) {
                 this.mistake()
             }
         }
@@ -126,8 +135,18 @@ const Quiz = {
         )
         setTimeout(() => {
             document.querySelector('.img').style.animation = "show .3s linear forwards";
-        }, 100)
+        }, 1000)
     },
+
+    renderResultPage(resut) {
+        this.app.dataset.page = 8;
+        this.body.innerHTML = '';
+        for(let key in this.getPrizes()[resut]) {
+            this.body.append(
+                this.renderTextElement(key, this.getPrizes()[resut][key])
+            )
+        }
+    }
 }
 
 Quiz.init();

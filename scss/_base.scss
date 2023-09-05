@@ -6,8 +6,8 @@ body {
     padding: 35px 30px 50px;
     background: var(--color-bg);
     max-width: 420px;
-    min-height: 740px;
     height: 100dvh;
+    // height: 740px;
     margin: 0px auto;
     overflow: hidden;
     position: relative;
@@ -25,7 +25,8 @@ body {
         transition: top .4s ease-in-out;
     }
 
-    &[data-page="1"] {
+    &[data-page="1"],
+    &[data-page="8"] {
         &::after {
             top: 50%;
         }
@@ -53,6 +54,21 @@ body {
             background: url('../img/4.png') no-repeat -25px -50px, url('../img/6.png') no-repeat calc(100% + 50px) 30px;
             opacity: 1;
             visibility: visible;
+
+            img {
+                &:nth-child(1) {
+                    top: -20px;
+                    left: 55%;
+                }
+                &:nth-child(2) {
+                    top: 10px;
+                    left: calc(100% - 60px);
+                }
+                &:nth-child(3) {
+                    top: 80px;
+                    left: -50px;
+                }
+            }
         }
     }
 
@@ -68,6 +84,15 @@ body {
             height: 60%;
             background: url('../img/2.png') no-repeat calc(50% + 60px) calc(100% + 190px);
             background-size: contain;
+
+            img {
+                &:nth-child(1) {
+                    top: 50%;
+                }
+                &:nth-child(3) {
+                    top: 60%;
+                }
+            }
         }
     }
 
@@ -83,6 +108,15 @@ body {
             height: 60%;
             background: url('../img/4.png') no-repeat calc(50% + 70px) calc(100% + 160px);
             background-size: contain;
+
+            img {
+                &:nth-child(1) {
+                    top: 50%;
+                }
+                &:nth-child(3) {
+                    top: 60%;
+                }
+            }
         }
     }
 
@@ -98,6 +132,15 @@ body {
             height: 60%;
             background: url('../img/4.png') no-repeat calc(50% + 70px) calc(100% + 190px);
             background-size: contain;
+
+            img {
+                &:nth-child(1) {
+                    top: 50%;
+                }
+                &:nth-child(3) {
+                    top: 60%;
+                }
+            }
         }
     }
 
