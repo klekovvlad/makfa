@@ -45,7 +45,7 @@ body {
   background: var(--color-bg);
   max-width: 420px;
   min-height: 740px;
-  height: 100vh;
+  height: 100dvh;
   margin: 0px auto;
   overflow: hidden;
   position: relative;
