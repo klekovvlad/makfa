@@ -1,0 +1,130 @@
+.title,
+.message,
+.question,
+.answer {
+    color: var(--color-green2);
+    text-align: center;
+    width: 100%;
+}
+
+.title,
+.subtitle {
+    text-transform: uppercase;
+}
+
+.title {
+    color: var(--color-title);
+    font-size: 27px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #fff;
+    font-size: 22px;
+    line-height: 28px;
+    letter-spacing: 1px;
+}
+
+.question {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message {
+    font-size: 16px;
+    line-height: 22px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, 10px);
+    transition: opacity .3s linear, transform .5s linear;
+}
+
+.answers {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+}
+
+.answer {
+    cursor: pointer;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 14px;
+    background: #fff;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, 10px);
+    animation: show .5s linear forwards;
+
+    &.true {
+        background: var(--color-yellow);
+    }
+
+    &.false {
+        background: var(--color-red);
+    }
+
+    &:nth-child(2) {
+        animation-delay: .2s;
+    }
+
+    &:nth-child(3) {
+        animation-delay: .4s;
+    }
+
+    &:nth-child(4) {
+        animation-delay: .6s;
+    }
+}
+
+.button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 14px;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--color-green2);
+    font-size: 20px;
+    letter-spacing: 1px;
+    z-index: 5;
+    bottom: 50px;
+    left: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: opacity .3s linear, transform .3s linear;
+}
+
+.img {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: 0;
+    height: 40%;
+    transform: translate(0, 50px);
+    opacity: 0;
+    visibility: hidden;
+    
+}
+
+@keyframes show {
+    100% {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
