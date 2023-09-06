@@ -1,7 +1,9 @@
 import { ListImages } from "./modules/images.js";
+import { KEYS } from "./modules/keys.js";
 import { Pages } from "./modules/pages.js";
 import { Prizes } from "./modules/prizes.js";
 import { question } from "./modules/questions.js"
+import { ResultSend } from "./modules/sendResult.js";
 import { shuffle } from "./modules/shuffle.js";
 
 const Quiz = {
@@ -9,10 +11,10 @@ const Quiz = {
     body: document.createElement('div'),
     live: 3,
     page: 0,
-    questions: [],
+    questions: shuffle(question),
+    message: '',
 
     init() {
-        this.questions = this.getQuestions();
         this.getPage();
         this.body.classList.add('app-body');
         for(let key in this.getPagesText()[this.page]) {
@@ -45,19 +47,18 @@ const Quiz = {
                     button.textContent = 'К покупкам'
                     if(this.live === 0) {
                         this.renderResultPage('looser')
+                        this.message = `LOOSER MAKFA: ${(this.page - 1) + (this.live - 3)} из ${this.questions.length}`
                     }else{
                         this.renderResultPage('winner')
+                        this.message = `WINNER MAKFA: ${this.questions.length + (this.live - 3)} из ${this.questions.length}`
                     }
+                    ResultSend(this.message, KEYS.TOKEN, KEYS.CHAT_ID)
                     button.onclick = () => {
                         alert('Тут переход на категорию внутри МП')
                     }
                 }
             }
         }
-    },
-
-    getQuestions() {
-        return shuffle(question);
     },
 
     getPrizes() {
