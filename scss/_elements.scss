@@ -44,6 +44,17 @@
     visibility: hidden;
     transform: translate(0, 10px);
     transition: opacity .3s linear, transform .5s linear;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    &::before {
+        font-size: 18px;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
 }
 
 .answers {

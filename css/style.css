@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --color-bg: #7cb409;
   --color-title: #ffff33;
@@ -73,6 +74,7 @@ body {
   background: var(--color-bg);
   max-width: 420px;
   height: 100dvh;
+  min-height: max(740px, 100vh);
   margin: 0px auto;
   overflow: hidden;
   position: relative;
@@ -92,7 +94,7 @@ body {
   transition: top 0.4s ease-in-out;
 }
 .app[data-page="1"]::after, .app[data-page="8"]::after {
-  top: 50%;
+  top: 40%;
 }
 .app[data-page="1"] .button, .app[data-page="8"] .button {
   color: #fff;
@@ -153,7 +155,7 @@ body {
   background-size: contain;
 }
 .app[data-page="5"] .img {
-  height: 60%;
+  height: 50%;
   background: url("../img/4.png") no-repeat calc(50% + 70px) calc(100% + 160px);
   background-size: contain;
 }
@@ -164,7 +166,7 @@ body {
   top: 60%;
 }
 .app[data-page="6"] .img {
-  background: url("../img/5.png") no-repeat calc(50% + 70px) calc(100% + 80px);
+  background: url("../img/5.png") no-repeat calc(50% + 70px) calc(100% + 120px);
   background-size: contain;
 }
 .app[data-page="7"] .img {
@@ -211,6 +213,12 @@ body {
   visibility: visible;
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+.app-body.true .message::before {
+  content: "Верно";
+}
+.app-body.false .message::before {
+  content: "Не верно";
 }
 
 .title,
@@ -269,6 +277,25 @@ body {
   transition: opacity 0.3s linear, -webkit-transform 0.5s linear;
   transition: opacity 0.3s linear, transform 0.5s linear;
   transition: opacity 0.3s linear, transform 0.5s linear, -webkit-transform 0.5s linear;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 6px;
+}
+.message::before {
+  font-size: 18px;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .answers {

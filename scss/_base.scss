@@ -7,7 +7,7 @@ body {
     background: var(--color-bg);
     max-width: 420px;
     height: 100dvh;
-    // height: 740px;
+    min-height: max(740px, 100vh);
     margin: 0px auto;
     overflow: hidden;
     position: relative;
@@ -28,7 +28,7 @@ body {
     &[data-page="1"],
     &[data-page="8"] {
         &::after {
-            top: 50%;
+            top: 40%;
         }
 
         .button {
@@ -106,7 +106,7 @@ body {
     
     &[data-page="5"] {
         .img {
-            height: 60%;
+            height: 50%;
             background: url('../img/4.png') no-repeat calc(50% + 70px) calc(100% + 160px);
             background-size: contain;
 
@@ -123,7 +123,7 @@ body {
 
     &[data-page="6"] {
         .img {
-            background: url('../img/5.png') no-repeat calc(50% + 70px) calc(100% + 80px);
+            background: url('../img/5.png') no-repeat calc(50% + 70px) calc(100% + 120px);
             background-size: contain;
         }
     }
@@ -168,6 +168,18 @@ body {
                 opacity: 1;
                 visibility: visible;
                 transform: scale(1);
+            }
+        }
+
+        &.true {
+            .message::before {
+                content: 'Верно';
+            }
+        }
+
+        &.false {
+            .message::before {
+                content: 'Не верно';
             }
         }
     }

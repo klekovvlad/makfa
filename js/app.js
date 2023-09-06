@@ -2,6 +2,7 @@ import { ListImages } from "./modules/images.js";
 import { Pages } from "./modules/pages.js";
 import { Prizes } from "./modules/prizes.js";
 import { question } from "./modules/questions.js"
+import { shuffle } from "./modules/shuffle.js";
 
 const Quiz = {
     app: document.querySelector('.app'),
@@ -56,7 +57,7 @@ const Quiz = {
     },
 
     getQuestions() {
-        return question;
+        return shuffle(question);
     },
 
     getPrizes() {
@@ -119,6 +120,7 @@ const Quiz = {
 
     afterCheckAnswer(target, answer) {
         target.classList.add(answer)
+        this.body.classList.add(answer)
         this.body.classList.add('hidden');
     },
 
@@ -130,7 +132,7 @@ const Quiz = {
             this.renderTextElement(
                 'question', this.questions[this.page - 2].question
             ),
-            this.renderAnswers(this.questions[this.page - 2].answers),
+            this.renderAnswers(shuffle(this.questions[this.page - 2].answers)),
             this.renderTextElement('message', this.questions[this.page - 2].message)
         )
         setTimeout(() => {
