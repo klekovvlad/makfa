@@ -13,6 +13,7 @@ const Quiz = {
     page: 0,
     questions: shuffle(question),
     message: '',
+    category_id: '3074457345616848733',
 
     init() {
         this.getPage();
@@ -37,7 +38,7 @@ const Quiz = {
     buttonListener(button) {
         if(button) {
             button.onclick = () => {
-                this.body.classList.remove('hidden')
+                this.body.className = 'app-body';
                 if(this.page > 0) {
                     button.textContent = 'Далее'
                 }
@@ -54,7 +55,7 @@ const Quiz = {
                     }
                     ResultSend(this.message, KEYS.TOKEN, KEYS.CHAT_ID)
                     button.onclick = () => {
-                        alert('Тут переход на категорию внутри МП')
+                        window.location.href = `okeymobile://category?id=${this.category_id}`
                     }
                 }
             }

@@ -12,6 +12,7 @@ dist
 dist-ssr
 public
 *.local
+js/modules/keys.js
 
 # Editor directories and files
 .vscode/*
